@@ -1,0 +1,25 @@
+{
+  "name": "FundriseUp",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "repository": "https://github.com/Greyewi/FundriseUp.git",
+  "author": "Greyewi <greyewi@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.10"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "concurrently --kill-others \"nodemon client/index.js\" \"nodemon server/index.js\"",
+    "server": "node server/index.js",
+    "client": "node client/index.js"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "eval": "^0.1.8",
+    "jest": "^27.5.1"
+  }
+}
