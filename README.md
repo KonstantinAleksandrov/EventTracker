@@ -1,7 +1,5 @@
 # Event tracker
 
-### https://fundraiseup.notion.site/Fullstack-test-ver-2-d63f18de664645cd8529eccc735c22fa
-
 ## Instructions to launch:
 
 1) It necessary to add the .env file to the root directory, with the next format:
