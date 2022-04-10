@@ -21,7 +21,6 @@ app.post("/track", async (req, res) => {
   const trackers = JSON.parse(req.body);
   trackers.forEach((track) => {
     const errors = trackValidator(track);
-    console.log(errors, track);
     if (Object.keys(errors).length > 0) {
       console.log(errors);
       res.status(400).end();

@@ -32,7 +32,7 @@ describe("Tracker test", () => {
     expect(tracker.buffer.length).toEqual(counter);
   });
 
-  it("should be packed to different arrays", () => {
+  it("should be packed to different arrays with maxSize = 3", () => {
     const { tracker } = _eval(js, "name", { window, document }, true);
 
     tracker.track("event", ...tagList);
@@ -53,7 +53,7 @@ describe("Tracker test", () => {
     }, 1000);
   });
 
-  it("should be get an errors", () => {
+  it("should be get an error", () => {
     const { tracker } = _eval(js, "name", { window, document }, true);
     tracker.track("", ...tagList);
     const errors1 = trackValidator(tracker.buffer[0]);

@@ -1,8 +1,4 @@
 class Tracker {
-  static trackEndpoint = "http://localhost:8001/track";
-  static trackMaxSize = 3;
-  static trackInterval = 1000;
-
   constructor() {
     this.buffer = [];
 
@@ -16,31 +12,22 @@ class Tracker {
     );
   }
 
-  track() {
-    const [event, ...rest] = arguments;
-    const point = {
-      event,
-      tags: rest,
-      url: window.location.href,
-      title: document.title,
-      ts: this.#getLocalTime(),
-    };
-    this.buffer = [...this.buffer, point];
-    this.#requirementSend(Tracker.trackInterval)(Tracker.trackMaxSize);
-  }
+  static trackEndpoint = "http://localhost:8001/track";
+  static trackMaxSize = 3;
+  static trackInterval = 1000;
 
-  #getLocalTime() {
+  static #getLocalTime() {
     const date = new Date();
     const offset = date.getTimezoneOffset();
     const localTime =
       (offset < 0 ? "+" : "-") +
-      this.#leftPad(Math.floor(Math.abs(offset / 60)), 2) +
+      Tracker.#leftPad(Math.floor(Math.abs(offset / 60)), 2) +
       ":" +
-      this.#leftPad(Math.abs(offset % 60), 2);
+      Tracker.#leftPad(Math.abs(offset % 60), 2);
     return date.toISOString().slice(0, -1) + localTime;
   }
 
-  #leftPad(time, size) {
+  static #leftPad(time, size) {
     let s = String(time);
     while (s.length < (size || 2)) {
       s = "0" + s;
@@ -48,8 +35,21 @@ class Tracker {
     return s;
   }
 
+  track() {
+    const [event, ...rest] = arguments;
+    const point = {
+      event,
+      tags: rest,
+      url: window.location.href,
+      title: document.title,
+      ts: Tracker.#getLocalTime(),
+    };
+    this.buffer = [...this.buffer, point];
+    this.#requirementSend(Tracker.trackInterval)(Tracker.trackMaxSize);
+  }
+
   #sendToStorage() {
-    let restoredBuffer = this.buffer;
+    const restoredBuffer = this.buffer;
     try {
       navigator.sendBeacon(Tracker.trackEndpoint, JSON.stringify(this.buffer));
       this.buffer = [];
