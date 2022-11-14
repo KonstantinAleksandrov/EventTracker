@@ -1,0 +1,80 @@
+$maxWidth: 1440;
+$minWidth: 320;
+$maxWidthContainer: 1920;
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 719.98;
+$md4: 479.98;
+$mainColor: #3a3a3a;
+
+@mixin adaptive-value($property,$startSize,$minSize,$needWidth,$type){
+   $addSize : $startSize - $minSize;
+   @if $type == 1 {
+      //Только если меньше контейнера
+      #{$property} : $startSize + px;
+      @media(max-width: #{$maxWidthContainer + px}){
+         #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$needWidth + px}) / #{$maxWidthContainer - 320}));
+      }
+   } @else if $type == 2 {
+      //Только если больше контейнера
+      #{$property} : $startSize + px;
+      @media(min-width: #{$maxWidthContainer + px}){
+         #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$needWidth + px}) / #{$maxWidth - 320}));
+      }
+   } @else {
+      //Всгда
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$needWidth + px}) / #{$maxWidth - 320}));
+   }
+}
+.blocks-background__subMain,.blocks-background__main,.blocks-background__top,
+.blocks-background__bottomMain,.blocks-background__bottomTriangle{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.blocks-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.blocks-background__main{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./img/mainBackgroun.png);
+}
+.blocks-background__subMain{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(./img/backBack.png);
+    opacity: 0.2;
+}
+.blocks-background__top{
+    width: 100%;
+    @include adaptive-value("height", 193,100,320,1);
+    top: 0;
+    left: 0;
+    background-image: url(./img/grayTriangle.png);
+}
+.blocks-background__bottomMain{
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    @include adaptive-value("height", 336,200,320,1);
+    background-image: url(./img/YellowGradient.png);
+}
+.blocks-background__bottomTriangle{
+    background-image: url(./img/yellowTriangle.png);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    @include adaptive-value("height", 300,200,320,1);
+    opacity: 0.2;
+}
