@@ -1,6 +1,9 @@
 import React from "react";
 import './style.scss'
 import cross from './img/cross.svg'
+import backgroundTop from './img/Vector.png'
+import backgroundBackground from './img/backgroundBackground.png'
+import backgruondMain from './img/bacgrounModal.png'
 const FormModal = ({ setIsOpen }) => {
     return (
         <div className="modal1" onClick={(e) => e.stopPropagation()}>
@@ -21,6 +24,18 @@ const FormModal = ({ setIsOpen }) => {
             <div className='main-button'><span>Confirm</span></div>
             <div className="closeCross" onClick={() => setIsOpen(false)}>
                 <img src={cross} alt="cross" />
+            </div>
+            <div className="modal1-backgroundBlock">
+                <div className="modal1-background__top">
+                    <img src={backgroundTop} alt='backgruondTop' />
+                    {/* <img src={backgroundBackground} alt='backgroundBackground' /> */}
+                </div>
+                <div className="modal1-background__main">
+                    <img src={backgruondMain} alt='backgruondMain' />
+                </div>
+                <div className="modal1-background__background">
+                <img src={backgroundBackground} alt='backgroundBackground' />
+                </div>
             </div>
         </div>
     )
