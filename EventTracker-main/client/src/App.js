@@ -10,13 +10,22 @@ import ProgressBar from './components/progressBar'
 import Timer from './components/timer'
 import Modal from './components/Modal/index'
 import FormModal from './components/form-modal/index'
-import { useState } from 'react'
+import { useState,useEffect,useRef} from 'react'
 function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [filled, setFilled] = useState(0)
+  const wrapper = useRef()
+  useEffect(()=>{
+    /* if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      wrapper.current.style.width = 100 + '%'
+      wrapper.current.style.height = 100 + '%'
+      
+      console.log(window.innerHeight)
+    } */
+  },[])
   return (
     <div className="App">
-      <div className='wrapper'>
+      <div ref={wrapper} className='wrapper'>
         <DrawBackgrounds />
         <header className='header'>
           <DrowHeaderLogo />
