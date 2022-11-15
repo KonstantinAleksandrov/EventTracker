@@ -4,7 +4,7 @@ import headerLogo from './icons/headerLogo.png'
 const DrowHeaderLogo = () => {
     return (
         <div className='header-logo'>
-            <img src={headerLogo} alt='logo' />
+            <a href="#"><img src={headerLogo} alt='logo' /></a>
         </div>
     )
 }

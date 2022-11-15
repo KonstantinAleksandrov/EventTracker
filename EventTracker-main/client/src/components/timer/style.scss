@@ -1,0 +1,72 @@
+$maxWidth: 1440;
+$minWidth: 320;
+$maxWidthContainer: 1920;
+$md1: $maxWidthContainer + 12;
+$md2: 1099.98;
+$md3: 719.98;
+$md4: 479.98;
+$mainColor: #3a3a3a;
+
+
+@mixin adaptive-value($property, $startSize, $minSize, $needWidth, $type) {
+    $addSize : $startSize - $minSize;
+
+    @if $type ==1 {
+        //Только если меньше контейнера
+        #{$property}: $startSize + px;
+
+        @media(max-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$needWidth + px}) / #{$maxWidthContainer - 320}));
+        }
+    }
+
+    @else if $type ==2 {
+        //Только если больше контейнера
+        #{$property}: $startSize + px;
+
+        @media(min-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$needWidth + px}) / #{$maxWidth - 320}));
+        }
+    }
+
+    @else {
+        //Всгда
+        #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$needWidth + px}) / #{$maxWidth - 320}));
+    }
+}
+.main-blockTimer {
+    @include adaptive-value("width",528, 280, 320, 1);
+    width: 528px;
+    height: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    li {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        flex: 0 0 25%;
+        height: 100%;
+        background-image: url(./backgroundTimer.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+
+.item-blockTimer__number {
+    color: white;
+    font-weight: 700;
+    @include adaptive-value("font-size",51, 32, 320, 1);
+    @include adaptive-value("line-height",60, 45, 320, 1);
+    margin-bottom: 2px;
+}
+.item-blockTimer__type{
+    font-weight: 700;
+    @include adaptive-value("font-size",18, 12, 320, 1);
+    line-height: 21px;
+    color: #F4C700;
+    text-transform: uppercase;
+}

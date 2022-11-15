@@ -1,0 +1,172 @@
+$maxWidth: 1440;
+$minWidth: 320;
+$maxWidthContainer: 1920;
+$md1: $maxWidthContainer + 12;
+$md2: 1099.98;
+$md3: 719.98;
+$md4: 479.98;
+$mainColor: #3a3a3a;
+
+
+@mixin adaptive-value($property, $startSize, $minSize, $needWidth, $type) {
+    $addSize : $startSize - $minSize;
+
+    @if $type ==1 {
+        //Только если меньше контейнера
+        #{$property}: $startSize + px;
+
+        @media(max-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$needWidth + px}) / #{$maxWidthContainer - 320}));
+        }
+    }
+
+    @else if $type ==2 {
+        //Только если больше контейнера
+        #{$property}: $startSize + px;
+
+        @media(min-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$needWidth + px}) / #{$maxWidth - 320}));
+        }
+    }
+
+    @else {
+        //Всгда
+        #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$needWidth + px}) / #{$maxWidth - 320}));
+    }
+}
+
+.modal1 {
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    width: 531px;
+    height: 336px;
+    padding: 27px 100px 30px 100px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(./img/bacgrounModal.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .main-button {
+        width: 100%;
+        font-size: 20px;
+
+        span::after {
+            top: 19px;
+            left: 4px;
+            height: 56%;
+            width: 45px;
+        }
+
+        span::before {
+            top: 19px;
+            left: -1px;
+            height: 56%;
+            width: 45px;
+        }
+    }
+}
+
+.modal1-input {
+    padding: 0 10px 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 37px;
+    background-image: url(./img/borderModal.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    span{
+        color: #CFC5A1;
+        font-size: 16px;
+    }
+    input {
+        background-image: url(./img/bacgrounModal.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 150px;
+        height: 20px;
+        padding: 0 5px 0 5px;
+        color: #CFC5A1;
+    }
+}
+
+.modal1-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 35px;
+    text-transform: uppercase;
+    color: #0E0F25;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    display: none;
+}
+
+.modal1-total {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal1-total__right {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+}
+
+.modal1-total__right span {
+    padding-right: 25px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.modal1-total__right {
+    span::after {
+        content: '';
+        margin-left: 10px;
+        display: block;
+        flex: 0 0 25px;
+        height: 25px;
+        background-image: url('./img/123.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+.modal1-total__left {
+    display: flex;
+    align-items: center;
+}
+
+.modal1-total__text {
+    font-size: 24px;
+    line-height: 28px;
+    color: #F5C800;
+    font-weight: 700;
+}
+
+.closeCross {
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    top: 32px;
+    right: 60px;
+    cursor: pointer;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}

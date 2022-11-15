@@ -96,6 +96,7 @@ $md3: 719.98;
 $md4: 479.98;
 $mainColor: #3a3a3a;
 
+
 @mixin adaptive-value($property, $startSize, $minSize, $needWidth, $type) {
     $addSize : $startSize - $minSize;
 
@@ -128,6 +129,14 @@ $mainColor: #3a3a3a;
     width: 100vw;
     height: 100vh;
     font-family: 'Roboto', sans-serif;
+
+    @media(max-height:849px) {
+        width: 100%;
+        height: 100%;
+        /* @media(min-width:700px){
+            height: 100vh;
+          } */
+    }
 }
 
 .header {
@@ -160,44 +169,7 @@ $mainColor: #3a3a3a;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
 
-.main-logo {
-    @include adaptive-value("width", 315, 200, 320, 1);
-    @include adaptive-value("height", 273, 200, 320, 1);
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-}
-
-.main-caseContainer {
-    position: relative;
-    @include adaptive-value("width", 600, 320, 320, 1);
-    @include adaptive-value("height", 380, 200, 320, 1);
-    @include adaptive-value("margin-top", -115, -80, 320, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .caseShadow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .case {
-        position: relative;
-        width: 70%;
-        height: 70%;
-        object-fit: contain;
-
-    }
 }
 
 .main-price {
@@ -254,6 +226,7 @@ $mainColor: #3a3a3a;
         @include adaptive-value("left", 13, -2, 320, 1);
         content: '';
     }
+
     span::after {
         height: 80%;
         width: 45px;
@@ -263,92 +236,11 @@ $mainColor: #3a3a3a;
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
-       @include adaptive-value("top", 11, 4, 320, 1);
+        @include adaptive-value("top", 11, 4, 320, 1);
         @include adaptive-value("left", 23, 3, 320, 1);
         content: '';
         overflow: hidden;
     }
+
     overflow: hidden;
-}
-.container-progressBar{
-    @include adaptive-value("width", 530, 280, 320, 1);
-    @include adaptive-value("margin-top", -30, 50, 320, 1);
-    margin-bottom: 25px;
-}
-.container-progressBar__header{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-.container-progressBar__title{
-    @include adaptive-value("font-size", 25, 20, 320, 1);
-    color: white;
-    font-weight: 700;
-}
-.container-progressBar__subTitle{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-}
-.container-progressBar__percent{
-    display: inline-flex;
-        align-items: flex-end;
-        color: #FF5D12;
-        font-size: 18px;
-        font-weight: 700;
-        @include adaptive-value("font-size", 18, 14, 320, 1);
-}
-.numbers-progressBar{
-    display: inline-flex;
-        align-items: flex-end;
-        color: #FF5D12;
-        font-weight: 700;
-        font-size: 14px;
-        opacity: 0.5;
-}
-.container-progressBar__body{
-    position: relative;
-    width: 100%;
-    height: 13px;
-    background-color: #221D17;
-    border-radius: 30px;
-    overflow: hidden;
-}
-.container-progressBar__band{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    border-radius: 30px;
-    background-color: #A1EC00;
-    transition: width 0.3s ease 0s;
-}
-.block-cars{
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px;
-    bottom: 0;
-    left: 0;
-}
-.block-cars div{
-    @media(min-width:$md2 + px){
-       display: block;
-     }
-   display: none;
-    @include adaptive-value("width", 571, 400, 320, 1);
-    @include adaptive-value("height", 256, 200, 320, 1);
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
 }
