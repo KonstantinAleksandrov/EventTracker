@@ -7,6 +7,7 @@ import backgruondMain from './img/bacgrounModal.png'
 const FormModal = ({ setIsOpen }) => {
     return (
         <div className="modal1" onClick={(e) => e.stopPropagation()}>
+            <div className="block-form__contant">
             <div className="modal1-title">Mystery boxes amount</div>
             <div className="modal1-input">
                 <input type='number' placeholder="Set amount of boxes" />
@@ -24,6 +25,7 @@ const FormModal = ({ setIsOpen }) => {
             <div className='main-button'><span>Confirm</span></div>
             <div className="closeCross" onClick={() => setIsOpen(false)}>
                 <img src={cross} alt="cross" />
+            </div>
             </div>
             <div className="modal1-backgroundBlock">
                 <div className="modal1-background__top">

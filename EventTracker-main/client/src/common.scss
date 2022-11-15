@@ -146,14 +146,6 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Roboto', sans-serif;
-
-    /* @media(max-height:849px) {
-        width: 100%;
-        height: 100%;
-        @media(min-width:700px){
-            height: 100vh;
-          }
-    } */
 }
 
 .header {
@@ -175,7 +167,6 @@ body {
     align-items: center;
     @include adaptive-value("padding-left", 100, 10, 320, 1);
     @include adaptive-value("padding-right", 100, 15, 320, 1);
-    /* @include adaptive-value("margin-bottom", 0, 50, 320, 1); */
 }
 
 .main {

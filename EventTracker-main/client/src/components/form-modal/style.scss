@@ -40,12 +40,7 @@ $mainColor: #3a3a3a;
     position: relative;
     width: 531px;
     height: 336px;
-    padding: 27px 100px 30px 100px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    padding: 27px 10px 30px 10px;
     background-image: url(./img/bacgrounModal.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -53,23 +48,46 @@ $mainColor: #3a3a3a;
 
     .main-button {
         z-index: 3;
+        height: 91px;
         width: 100%;
         font-size: 20px;
 
         span::after {
-            top: 19px;
+            top: 20px;
             left: 4px;
-            height: 56%;
+            height: 50.95px;
             width: 45px;
+            @media(max-width:600px){
+                @include adaptive-value("top", 20, 26, 320, 1);
+                @include adaptive-value("left", 4, -1, 320, 1);
+                @include adaptive-value("height", 50.95, 38.95, 320, 1);
+            }
         }
 
         span::before {
-            top: 19px;
-            left: -1px;
-            height: 56%;
+            top: 20px;
+            height: 50.95px;
             width: 45px;
+            left: -1px;
+            @media(max-width:600px){
+                @include adaptive-value("top", 20, 26, 320, 1);
+            @include adaptive-value("left", -1, -5, 320, 1);
+            @include adaptive-value("height", 50.95, 38.95, 320, 1);
+            }
         }
     }
+}
+.block-form__contant{
+    @media(max-width:600px){
+        @include adaptive-value("width", 331, 250, 320, 1);
+    }
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 331px;
+    height: 100%;
 }
 
 .modal1-input {
@@ -162,6 +180,9 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .closeCross {
+    @media(max-width:600px){
+        top: 50px;
+    }
     z-index: 3;
     width: 23px;
     height: 23px;
@@ -213,22 +234,15 @@ input[type='number']::-webkit-outer-spin-button {
     }
 }
 .modal1-background__top{
-    /* z-index: 2; */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 80px;
     img{
-        /* position: absolute;
-        top: 0;
-        left: 0; */
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
-    /* img:first-child{
-        z-index: 2;
-        opacity: 0.5;
-    } */
+
 }
