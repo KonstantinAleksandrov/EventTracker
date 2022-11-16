@@ -38,13 +38,20 @@ $mainColor: #3a3a3a;
 .modal1 {
     font-family: 'Roboto', sans-serif;
     position: relative;
-    width: 531px;
+    width: 530px;
     height: 336px;
-    padding: 27px 10px 30px 10px;
-    background-image: url(./img/bacgrounModal.png);
+    background-image: url(./img/modal-bg.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    @media(max-width:600px){
+        @include adaptive-value("width", 560, 280, 320, 1);
+        @include adaptive-value("height",336, 300, 320, 1);
+    }
 
     .main-button {
         z-index: 3;
@@ -53,11 +60,12 @@ $mainColor: #3a3a3a;
         font-size: 20px;
 
         span::after {
-            top: 20px;
-            left: 4px;
-            height: 50.95px;
+            top: 12px;
+            height: 67.95px;
+            left: 13px;
             width: 45px;
-            @media(max-width:600px){
+
+            @media(max-width:600px) {
                 @include adaptive-value("top", 20, 26, 320, 1);
                 @include adaptive-value("left", 4, -1, 320, 1);
                 @include adaptive-value("height", 50.95, 38.95, 320, 1);
@@ -65,29 +73,60 @@ $mainColor: #3a3a3a;
         }
 
         span::before {
-            top: 20px;
-            height: 50.95px;
+            top: 12px;
+            height: 67.95px;
             width: 45px;
-            left: -1px;
-            @media(max-width:600px){
+            left: 5px;
+
+            @media(max-width:600px) {
                 @include adaptive-value("top", 20, 26, 320, 1);
-            @include adaptive-value("left", -1, -5, 320, 1);
-            @include adaptive-value("height", 50.95, 38.95, 320, 1);
+                @include adaptive-value("left", -1, -5, 320, 1);
+                @include adaptive-value("height", 50.95, 38.95, 320, 1);
             }
         }
     }
 }
-.block-form__contant{
+.modal1-title {
+    margin-top: 27px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 35px;
+    text-transform: uppercase;
+    color: #0E0F25;
     @media(max-width:600px){
-        @include adaptive-value("width", 331, 250, 320, 1);
+        @include adaptive-value("font-size",30,22, 320, 1);
+        margin-top: 10px;
+        text-align: left;
+        padding: 0 15px;
     }
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 331px;
-    height: 100%;
+}
+.closeCross {
+    z-index: 3;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 28px;
+    right: 25px;
+    cursor: pointer;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.block-form__contant {
+    width: 430px;
+    margin-bottom: 20px;
+    @media(max-width:600px){
+        @include adaptive-value("width", 430, 250, 320, 1);
+        @include adaptive-value("margin-bottom", 20, 0, 320, 1);
+    }
 }
 
 .modal1-input {
@@ -102,10 +141,12 @@ $mainColor: #3a3a3a;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    span{
+
+    span {
         color: #CFC5A1;
         font-size: 16px;
     }
+
     input {
         background-position: center;
         background-repeat: no-repeat;
@@ -116,16 +157,6 @@ $mainColor: #3a3a3a;
         color: #CFC5A1;
         background-color: inherit;
     }
-}
-
-.modal1-title {
-    position: relative;
-    z-index: 3;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 35px;
-    text-transform: uppercase;
-    color: #0E0F25;
 }
 
 input[type='number']::-webkit-inner-spin-button,
@@ -139,9 +170,11 @@ input[type='number']::-webkit-outer-spin-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 10px 0;
 }
 
 .modal1-total__right {
+    color: white;
     font-size: 24px;
     line-height: 28px;
     font-weight: 700;
@@ -170,79 +203,31 @@ input[type='number']::-webkit-outer-spin-button {
 .modal1-total__left {
     display: flex;
     align-items: center;
+    font-size: 24px;
+    @media(max-width:600px){
+        font-size: 20px;
+    }
 }
 
 .modal1-total__text {
-    font-size: 24px;
     line-height: 28px;
     color: #F5C800;
     font-weight: 700;
 }
 
-.closeCross {
-    @media(max-width:600px){
-        top: 50px;
-    }
-    z-index: 3;
-    width: 23px;
-    height: 23px;
+.modal1-background__top {
+    width: 100%;
+    height: 100px;
     position: absolute;
-    top: 32px;
-    right: 60px;
-    cursor: pointer;
+    top: 0;
+    left: 0;
 
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
-}
 
-.modal1-backgroundBlock{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.modal1-background__background{
-    opacity: 0.5;
-    z-index: 2;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-}
-.modal1-background__main{
-    position: absolute;
-    z-index: 1;
-    opacity: 0.2;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-}
-.modal1-background__top{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
+    opacity: 0.9;
+    filter: drop-shadow(0px 0px 38px #000);
 }

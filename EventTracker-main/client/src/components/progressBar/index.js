@@ -15,9 +15,9 @@ const ProgressBar = ({filled,setFilled}) => {
                 <div className='container-progressBar__subTitle'>
                     <span className='container-progressBar__percent'>123</span>
                     <div className='container-progressBar__numbers numbers-progressBar'>
-                        <span className='numbers-progressBar-before'>123</span>
+                        <span className='numbers-progressBar-before'>12300000</span>
                         /
-                        <span className='numbers-progressBar-after'>321</span>
+                        <span className='numbers-progressBar-after'>32100000</span>
                     </div>
                 </div>
             </div>

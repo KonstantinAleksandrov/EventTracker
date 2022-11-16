@@ -46,7 +46,7 @@ $mainColor: #3a3a3a;
     margin-bottom: 10px;
 }
 .container-progressBar__title{
-    @include adaptive-value("font-size", 25, 20, 320, 1);
+    @include adaptive-value("font-size", 25, 14, 320, 1);
     color: white;
     font-weight: 700;
 }
@@ -71,8 +71,8 @@ $mainColor: #3a3a3a;
         align-items: flex-end;
         color: #FF5D12;
         font-weight: 700;
-        font-size: 14px;
         opacity: 0.5;
+        @include adaptive-value("font-size", 14, 9, 320, 1);
 }
 .container-progressBar__body{
     position: relative;
